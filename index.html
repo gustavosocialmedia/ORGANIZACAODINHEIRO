@@ -1,0 +1,107 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Meu controle</title>
+<meta name="theme-color" content="#18181b"><meta name="robots" content="noindex"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Controle">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f4f5;--sf:#fff;--ink:#18181b;--mu:#71717a;--ln:#e4e4e7;--rd:#c0392b;--gn:#1e8e5a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111113;--sf:#1b1b1e;--ink:#f4f4f5;--mu:#a1a1aa;--ln:#2e2e33;--rd:#ef6b5b;--gn:#4cc38a}}
+:root[data-theme="dark"]{--bg:#111113;--sf:#1b1b1e;--ink:#f4f4f5;--mu:#a1a1aa;--ln:#2e2e33;--rd:#ef6b5b;--gn:#4cc38a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 'DM Sans',system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+#app{max-width:560px;margin:0 auto;padding:12px 16px 150px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+header div{text-align:center;display:flex;flex-direction:column}
+header button{background:var(--sf);border:1px solid var(--ln);border-radius:10px;width:40px;height:40px;font-size:20px;cursor:pointer}
+.mu{color:var(--mu)}.rd{color:var(--rd)}.gn{color:var(--gn)}small{font-size:12.5px;color:var(--mu)}
+h2,h3{margin:18px 0 8px;font-size:15px;font-weight:700}h2{font-size:18px;margin-top:0}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:14px;margin-bottom:12px}
+.big b{display:block;font-size:34px;letter-spacing:-.02em;margin:2px 0 8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.grid .card{margin:0}.grid b{font-size:19px;display:block}
+.bar{height:6px;background:var(--ln);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ink);border-radius:9px}
+.bar.over i{background:var(--rd)}.rdb i{background:var(--rd)}.gnb i{background:var(--gn)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ln)}
+.row:last-child{border:0}.row>div:first-child{display:flex;flex-direction:column}
+.cat{padding:9px 0}.cat .t{display:flex;justify-content:space-between;margin-bottom:5px}
+.hb{display:grid;grid-template-columns:110px 1fr 90px;gap:8px;align-items:center;margin:8px 0;font-size:13px}.hb b{text-align:right;font-weight:500}
+.cols{display:flex;gap:8px;align-items:flex-end;height:150px}.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%}
+.pr{flex:1;width:100%;display:flex;align-items:flex-end;gap:3px}.pr i{flex:1;border-radius:4px 4px 0 0;min-height:2px}.pr .g{background:var(--gn)}.pr .r{background:var(--rd)}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--sf);border-top:1px solid var(--ln);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{background:none;border:0;padding:14px 0;color:var(--mu);cursor:pointer;font-size:13px}nav button.on{color:var(--ink);font-weight:700;box-shadow:inset 0 2px var(--ink)}
+#fab{position:fixed;right:16px;bottom:calc(64px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:28px;cursor:pointer}
+#md{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center;z-index:5}#md[hidden]{display:none}
+.sh{background:var(--sf);width:100%;max-width:560px;border-radius:18px 18px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));max-height:88%;overflow:auto}
+label{display:block;font-size:13px;color:var(--mu);margin-bottom:10px}
+input,select,textarea{width:100%;padding:11px;border:1px solid var(--ln);border-radius:10px;background:var(--bg);margin-top:4px;font-size:16px}
+.seg{display:flex;gap:6px;margin-bottom:12px}.seg button{flex:1;padding:10px;border:1px solid var(--ln);background:var(--bg);border-radius:10px;cursor:pointer}.seg button.on{background:var(--ink);color:var(--bg)}
+.pri,.sec{width:100%;padding:13px;border-radius:12px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);font-weight:700;cursor:pointer;margin-top:4px}.sec{background:none;color:var(--ink);border-color:var(--ln);font-weight:500}
+.x{background:none;border:0;color:var(--mu);cursor:pointer;margin-left:8px;font-size:15px}
+.ban{background:var(--sf);border:1px solid var(--ink);border-radius:14px;padding:12px 14px;margin-bottom:12px}.ban button{margin-top:8px}
+#lock{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9;text-align:center}
+#lock input{width:140px;text-align:center;font-size:28px;letter-spacing:.4em;margin:10px auto}#lock h1{font-size:22px;margin:0}
+</style></head><body>
+<div id="lock"><div><h1>Meu controle</h1><p class="mu">Digite seu PIN</p><input id="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off"><p id="pe" class="rd"></p></div></div>
+<div id="app" hidden><header><button onclick="mv(-1)" aria-label="Período anterior">‹</button><div><b id="cl"></b><small>Período do dia 12 ao dia 11</small></div><button onclick="mv(1)" aria-label="Próximo período">›</button></header><main id="v"></main></div>
+<button id="fab" hidden onclick="addM()" aria-label="Novo lançamento">+</button>
+<nav id="nav" hidden><button data-t="h">Início</button><button data-t="l">Lançamentos</button><button data-t="g">Gráficos</button><button data-t="m">Metas</button><button data-t="a">Ajustes</button></nav>
+<div id="md" hidden><div class="sh" id="mb"></div></div>
+<script>
+const H='61f5869c42cc56c113f931c7ed19126205121938aaa9ccede69b20ec83a300e1',$=s=>document.querySelector(s),K='fin1';
+const CATS=['Parcela do carro','Combustível','Manutenção do carro','MEI (DAS)','Spotify','Lazer','Alimentação fora','Diversos e gastos bobos','Faculdade'];
+const MN=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+let S={tx:[],lim:{'Parcela do carro':150,'Combustível':250,'Manutenção do carro':150,'MEI (DAS)':90,'Spotify':10,'Lazer':250,'Alimentação fora':250,'Diversos e gastos bobos':100,'Faculdade':300,Guardar:500},ex:[50,30,20],res0:1605.19,meta:2850,fac:false,rev:''};
+try{const o=JSON.parse(localStorage.getItem(K));if(o)S=Object.assign(S,o)}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const R=v=>{const[a,b]=Math.abs(v).toFixed(2).split('.');return(v<0?'−':'')+'R$ '+a.replace(/\B(?=(\d{3})+$)/g,'.')+','+b};
+const num=x=>{let s=String(x).trim();s=s.includes(',')?s.replace(/\./g,'').replace(',','.'):s;return parseFloat(s)};
+const E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const cyc=s=>{const[y,m,d]=s.split('-').map(Number);return y*12+m-1-(d<12?1:0)};
+let cur=cyc(iso(new Date())),T='h',ty='out',AV=2050,AC='Renda fixa';
+const sum=(a,f)=>a.filter(f).reduce((s,t)=>s+t.v,0),tx=()=>S.tx.filter(t=>cyc(t.d)==cur);
+const sv=c=>sum(S.tx,t=>t.t=='sv'&&t.c==c),resV=()=>S.res0+sv('Reserva');
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function chk(){const e=$('#pin'),v=e.value;if(v.length<4)return;try{if(await sha(v)==H){$('#lock').hidden=true;['#app','#nav','#fab'].forEach(x=>$(x).hidden=false);render()}else{$('#pe').textContent='PIN incorreto';e.value=''}}catch(err){$('#pe').textContent='Não foi possível verificar o PIN neste navegador.'}}
+$('#pin').oninput=chk;$('#pin').onkeydown=e=>{if(e.key=='Enter')chk()};
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{T=b.dataset.t;render()});
+const mv=n=>{cur+=n;render()};
+const modal=h=>{$('#mb').innerHTML=h;$('#md').hidden=false},closeM=()=>{$('#md').hidden=true;render()};
+$('#md').onclick=e=>{if(e.target.id=='md')closeM()};
+function render(){const k=cur,a=k%12,b=(k+1)%12;$('#cl').textContent='12 '+MN[a]+' a 11 '+MN[b];
+document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x.dataset.t==T));
+$('#v').innerHTML={h:home,l:list,g:charts,m:goals,a:conf}[T]()}
+function home(){const a=tx(),i=sum(a,t=>t.t=='in'),o=sum(a,t=>t.t=='out'),g=sum(a,t=>t.t=='sv'),cs=CATS.filter(c=>c!='Faculdade'||S.fac),L=cs.reduce((s,c)=>s+S.lim[c],0),left=L-o,td=iso(new Date());
+const need=S.rev!=td&&(new Date().getDay()==0||(Date.now()-new Date(S.rev||0))/864e5>7);
+return(need?'<div class="ban"><b>Revisão da semana</b><br><small>Confira se todos os gastos foram lançados e como estão seus limites.</small><br><button class="sec" onclick="S.rev=iso(new Date());save();render()">Marcar como revisado</button></div>':'')+
+'<div class="card big"><small>Ainda pode gastar neste período</small><b class="'+(left<0?'rd':'')+'">'+R(left)+'</b><div class="bar '+(left<0?'over':'')+'"><i style="width:'+Math.min(100,L?o/L*100:0)+'%"></i></div><small>R$ '+o.toFixed(0)+' gastos de '+R(L)+' em limites</small></div>'+
+'<div class="grid"><div class="card"><small>Entrou</small><b class="gn">'+R(i)+'</b></div><div class="card"><small>Saiu</small><b class="rd">'+R(o)+'</b></div><div class="card"><small>Guardado</small><b>'+R(g)+'</b></div><div class="card"><small>Sobrou</small><b class="'+(i-o-g<0?'rd':'')+'">'+R(i-o-g)+'</b></div></div>'+
+'<h3>Limites por categoria</h3><div class="card">'+cs.map(c=>{const s=sum(a,t=>t.t=='out'&&t.c==c),l=S.lim[c];return'<div class="cat"><div class="t"><span>'+c+'</span><small>'+R(s)+' de '+R(l)+'</small></div><div class="bar '+(s>l?'over':'')+'"><i style="width:'+Math.min(100,s/l*100)+'%"></i></div></div>'}).join('')+'</div>'+
+'<button class="sec" onclick="allocM(2050,\'Renda fixa\')">Ver divisão ideal de uma entrada</button>'}
+function list(){const a=tx().sort((x,y)=>y.d.localeCompare(x.d)||y.id-x.id);return'<h2>Lançamentos</h2>'+(a.length?'<div class="card">'+a.map(t=>'<div class="row"><div><b>'+E(t.c)+'</b><small>'+t.d.slice(8)+'/'+t.d.slice(5,7)+(t.n?' · '+E(t.n):'')+'</small></div><div><b class="'+(t.t=='in'?'gn':t.t=='out'?'rd':'')+'">'+(t.t=='in'?'+':t.t=='out'?'−':'')+R(t.v)+'</b><button class="x" onclick="del('+t.id+',this)">×</button></div></div>').join('')+'</div>':'<p class="mu">Nenhum lançamento neste período. Toque em + para registrar o primeiro.</p>')}
+function del(id,b){if(b.dataset.c){S.tx=S.tx.filter(t=>t.id!=id);save();render()}else{b.dataset.c=1;b.textContent='Apagar?'}}
+function charts(){const m={};tx().filter(t=>t.t=='out').forEach(t=>m[t.c]=(m[t.c]||0)+t.v);const e=Object.entries(m).sort((x,y)=>y[1]-x[1]),mx=e[0]?e[0][1]:1;
+const ks=[5,4,3,2,1,0].map(n=>cur-n),v=ks.map(k=>[sum(S.tx,t=>cyc(t.d)==k&&t.t=='in'),sum(S.tx,t=>cyc(t.d)==k&&t.t=='out')]),M=Math.max(1,...v.flat());
+return'<h2>Gráficos</h2><h3>Para onde o dinheiro foi</h3><div class="card">'+(e.length?e.map(([c,x])=>'<div class="hb"><span>'+E(c)+'</span><div class="bar rdb"><i style="width:'+x/mx*100+'%"></i></div><b>'+R(x)+'</b></div>').join(''):'<small>Sem saídas neste período.</small>')+'</div><h3>Entradas (verde) e saídas (vermelho)</h3><div class="card"><div class="cols">'+ks.map((k,j)=>'<div class="col"><div class="pr"><i class="g" style="height:'+v[j][0]/M*100+'%"></i><i class="r" style="height:'+v[j][1]/M*100+'%"></i></div><small>'+MN[(k+1)%12]+'</small></div>').join('')+'</div></div>'}
+function goals(){const r=resV(),f=Math.max(0,S.meta-r),n=Math.ceil(f/Math.max(1,S.lim.Guardar));
+return'<h2>Metas</h2><div class="card"><div class="row"><b>Reserva de emergência</b><b>'+R(r)+'</b></div><div class="bar gnb"><i style="width:'+Math.min(100,r/S.meta*100)+'%"></i></div><small>'+(f>0?'Meta de '+R(S.meta)+'. Faltam '+R(f)+', cerca de '+n+' mês(es) guardando '+R(S.lim.Guardar)+' por mês.':'Meta concluída. Novos aportes vão para o apartamento e o dinheiro intocável.')+'</small></div>'+
+'<div class="card"><div class="row"><b>Entrada do apartamento</b><b>'+R(sv('Apartamento'))+'</b></div><small>Sem prazo definido. Depois da reserva, 60% do que você guarda vai para cá.</small></div><div class="card"><div class="row"><b>Dinheiro intocável</b><b>'+R(sv('Intocável'))+'</b></div><small>Para acumular a longo prazo, sem mexer. Recebe 40% do que você guarda depois da reserva.</small></div>'}
+function conf(){const ks=Object.keys(S.lim);return'<h2>Ajustes</h2><div class="card"><b>Limites mensais</b><small> (a divisão ideal usa estas proporções)</small>'+ks.map((k,i)=>'<label>'+(k=='Guardar'?'Guardar/investir':k)+'<input id="l'+i+'" inputmode="decimal" value="'+S.lim[k]+'"></label>').join('')+
+'<label><input type="checkbox" id="fc" style="width:auto" '+(S.fac?'checked':'')+'> Faculdade já começou (entra nos limites de gasto)</label></div><div class="card"><b>Renda extra: divisão em %</b><div class="seg"><input id="e0" value="'+S.ex[0]+'" aria-label="Reserva"><input id="e1" value="'+S.ex[1]+'" aria-label="Livre"><input id="e2" value="'+S.ex[2]+'" aria-label="Meta"></div><small>Reserva e investimento, livre, meta escolhida.</small></div><div class="card"><label>Reserva antes de usar o app<input id="r0" inputmode="decimal" value="'+S.res0+'"></label><label>Meta da reserva<input id="mt" inputmode="decimal" value="'+S.meta+'"></label></div><button class="pri" onclick="saveC()">Salvar ajustes</button>'+
+'<h3>Backup</h3><div class="card"><small>Seus dados ficam só neste aparelho. Copie o texto abaixo e guarde (por exemplo, no Drive). Para restaurar, cole e toque em Restaurar.</small><textarea id="bk" rows="4"></textarea><button class="sec" onclick="$(\'#bk\').value=JSON.stringify(S)">Gerar backup</button><button class="sec" onclick="rest()">Restaurar</button><button class="sec" onclick="dl()">Baixar arquivo de backup</button><label>Restaurar de um arquivo<input type="file" accept=".json,application/json" onchange="up(this.files[0])"></label></div>'}
+function saveC(){Object.keys(S.lim).forEach((k,i)=>{const v=num($('#l'+i).value);if(v>=0)S.lim[k]=v});S.fac=$('#fc').checked;S.ex=[0,1,2].map(i=>num($('#e'+i).value)||0);S.res0=num($('#r0').value)||0;S.meta=num($('#mt').value)||S.meta;save();T='h';render()}
+function rest(){try{S=Object.assign(S,JSON.parse($('#bk').value));save();T='h';render()}catch(e){$('#bk').value='Backup inválido. Cole o texto completo gerado antes.'}}
+function addM(){ty='out';form()}
+function sw(k){const v=$('#fv').value;ty=k;form();$('#fv').value=v}
+function form(){const o=ty=='in'?['Renda fixa','Renda extra']:ty=='sv'?['Reserva','Apartamento','Intocável']:CATS;
+modal('<div class="seg">'+[['out','Saída'],['in','Entrada'],['sv','Guardar']].map(([k,l])=>'<button class="'+(ty==k?'on':'')+'" onclick="sw(\''+k+'\')">'+l+'</button>').join('')+'</div><label>Valor<input id="fv" inputmode="decimal" placeholder="0,00"></label><label>Categoria<select id="fc2">'+o.map(c=>'<option>'+c+'</option>').join('')+'</select></label><label>Data<input id="fd" type="date" value="'+iso(new Date())+'"></label><label>Observação (opcional)<input id="fn" maxlength="40"></label><button class="pri" onclick="saveT()">Salvar lançamento</button>')}
+function saveT(){const v=num($('#fv').value);if(!(v>0)){$('#fv').style.borderColor='var(--rd)';return}
+const t={id:Date.now(),t:ty,c:$('#fc2').value,v,d:$('#fd').value||iso(new Date()),n:$('#fn').value};S.tx.push(t);save();cur=cyc(t.d);ty=='in'?allocM(v,t.c):closeM()}
+function allocM(v,c){AV=v;AC=c;modal('<h2>Para onde direcionar</h2><div class="seg">'+['Renda fixa','Renda extra'].map(k=>'<button class="'+(AC==k?'on':'')+'" onclick="allocM(AV,\''+k+'\')">'+k+'</button>').join('')+'</div><label>Valor recebido<input inputmode="decimal" value="'+v+'" oninput="AV=num(this.value)||0;rowsA()"></label><div id="ar"></div><button class="pri" onclick="closeM()">Fechar</button>');rowsA()}
+function rowsA(){const ks=Object.keys(S.lim),Tt=ks.reduce((s,k)=>s+S.lim[k],0);let r;
+if(AC=='Renda extra'){const L=['Reserva e investimento','Livre, sem culpa','Meta que você escolher'];r=S.ex.map((p,k)=>[L[k],p])}
+else r=ks.map(k=>[k=='Guardar'?'Guardar/investir para '+(resV()<S.meta?'a reserva':'apartamento (60%) e intocável (40%)'):k=='Faculdade'&&!S.fac?'Caixinha da faculdade (guarde na reserva)':k,S.lim[k]/Tt*100]);
+$('#ar').innerHTML=r.map(([l,p])=>'<div class="row"><div><b>'+l+'</b><small>'+p.toFixed(1).replace('.',',')+'%</small></div><b>'+R(AV*p/100)+'</b></div>').join('')}
+function dl(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));a.download='backup-controle-'+iso(new Date())+'.json';a.click()}
+function up(f){if(!f)return;const r=new FileReader();r.onload=()=>{$('#bk').value=r.result;rest()};r.readAsText(f)}
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+</script></body></html>
